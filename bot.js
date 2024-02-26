@@ -3,7 +3,7 @@ const { CosmWasmClient } = require('@cosmjs/cosmwasm-stargate');
 const fs = require('fs');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
-const token = 'MTIxMTc1ODAxMjU3MDY2OTA3Ng.GDVSai.LGWEgMr0XyRRocK8mQH1n4jHpmiIjv1J-4H1-4'; // Replace with Discord bot token
+const token = process.env.BOT_ID; 
 
 const rpcEndpoint = 'https://sei-m.rpc.n0ok.net/';// RPC of your choice
 const excludeAddress = 'sei152u2u0lqc27428cuf8dx48k8saua74m6nql5kgvsu4rfeqm547rsnhy4y9';   // Exclude Pallet contract from output
