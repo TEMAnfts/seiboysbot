@@ -12,6 +12,7 @@
   "dependencies": {
     "@cosmjs/cosmwasm-stargate": "^0.32.2",
     "discord.js": "^14.14.1",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "node-fetch": "^3.3.2"
   }
 }
