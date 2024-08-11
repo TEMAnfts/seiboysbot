@@ -58,27 +58,21 @@ const ownersCommand = {
 // command to get nft metadata of a specific token from a specific CA
 const metadataCommand = {
   name: 'flex',
-  description: 'Get metadata for a specific NFT',
+  description: 'USE THE TOKEN ID TO FLEX YOUR FAVORITE FUCKER',
   options: [
-    {
-      name: 'address',
-      type: 3,
-      description: 'The SEI collection contract address of the NFT',
-      required: true,
-    },
     {
       name: 'token_id',
       type: 3,
-      description: 'The token ID of the NFT to get metadata for',
+      description: 'THE TOKEN ID OF YOUR FUCKER',
       required: true,
     },
   ]
 };
 
 // command to get info on Sei Boys Genesis
-const boysInfoCommand = {
-  name: 'boys',
-  description: 'Get current collection info on the of Sei Boys Collection',
+const fuckersInfoCommand = {
+  name: 'fuckers',
+  description: 'GET CURRENT INFO ON THE SEI FUCKERS COLLECTION',
 };
 
 
@@ -86,9 +80,9 @@ client.once('ready', async () => {
   console.log('Ready!');
   
   const data = [
-    ownersCommand,
+    // ownersCommand,
     metadataCommand,
-    boysInfoCommand
+    fuckersInfoCommand
   ];
   await client.application.commands.set(data);
 });
@@ -116,7 +110,7 @@ client.on('interactionCreate', async interaction => {
     }
 	} else if (commandName === 'flex') {
     // New code to handle 'metadata' command
-    const contractAddress = options.getString('address');
+    const contractAddress = "sei1lqsrwexmpve6ltu8pga8ss0jzvgx9r88n6ys9fedjk6dqny72h3q7myv5d"
     const tokenId = options.getString('token_id');
 
     await interaction.deferReply();
@@ -136,62 +130,62 @@ client.on('interactionCreate', async interaction => {
       console.error(`An error occurred: ${error.message}`);
       await interaction.editReply({ content: 'Failed to retrieve metadata. Please make sure the contract address and token ID are correct.' });
     }
-    } else if (commandName === 'boys') {
-      await interaction.deferReply();
-      try {
-          const collectionInfo = await queryCollectionInfo();
-          const { logoUrl, name, supply, owners, auction_count, floor, volume, volume_24hr, num_sales_24hr } = collectionInfo;
+  //   } else if (commandName === 'fuckers') {
+  //     await interaction.deferReply();
+  //     try {
+  //         const collectionInfo = await queryCollectionInfo();
+  //         const { logoUrl, name, supply, owners, auction_count, floor, volume, volume_24hr, num_sales_24hr } = collectionInfo;
 
-          const embed = new EmbedBuilder()
-              .setTitle(`${name}`)
-              .setImage(logoUrl)
-              .addFields(
-                  { name: 'Supply', value: supply.toString(), inline: true },
-                  { name: 'Owners', value: owners.toString(), inline: true },
-                  { name: 'Floor', value: floor.toString(), inline: true },
-                  { name: 'Listed', value: auction_count.toString(), inline: true },
-                  { name: 'Volume', value: volume.toString(), inline: true },
-                  { name: '24hr Volume', value: volume_24hr.toString(), inline: true },
-                  { name: 'Sales 24hr', value: num_sales_24hr.toString(), inline: true }
-              );
+  //         const embed = new EmbedBuilder()
+  //             .setTitle(`${name}`)
+  //             .setImage(logoUrl)
+  //             .addFields(
+  //                 { name: 'Supply', value: supply.toString(), inline: true },
+  //                 { name: 'Owners', value: owners.toString(), inline: true },
+  //                 { name: 'Floor', value: floor.toString(), inline: true },
+  //                 { name: 'Listed', value: auction_count.toString(), inline: true },
+  //                 { name: 'Volume', value: volume.toString(), inline: true },
+  //                 { name: '24hr Volume', value: volume_24hr.toString(), inline: true },
+  //                 { name: 'Sales 24hr', value: num_sales_24hr.toString(), inline: true }
+  //             );
           
-          const twitterButton = new ButtonBuilder()
-          .setLabel('Go To Twitter')
-          .setStyle(ButtonStyle.Link) 
-          .setURL('https://twitter.com/SEI_Boys');
+  //         const twitterButton = new ButtonBuilder()
+  //         .setLabel('Go To Twitter')
+  //         .setStyle(ButtonStyle.Link) 
+  //         .setURL('https://twitter.com/SeiFucker');
           
-          const collectionButton = new ButtonBuilder()
-          .setLabel('Go To Collection')
-          .setStyle(ButtonStyle.Link) 
-          .setURL('https://pallet.exchange/collection/sei-boys'); 
+  //         const collectionButton = new ButtonBuilder()
+  //         .setLabel('Go To Collection')
+  //         .setStyle(ButtonStyle.Link) 
+  //         .setURL('https://pallet.exchange/collection/sei-fuckers'); 
   
-          const row = new ActionRowBuilder().addComponents(twitterButton, collectionButton);
+  //         const row = new ActionRowBuilder().addComponents(twitterButton, collectionButton);
 
-          await interaction.editReply({ embeds: [embed], components: [row] });
-      } catch (error) {
-          console.error(`An error occurred: ${error.message}`);
-          await interaction.editReply({ content: 'Failed to retrieve collection information. Please try again later.' });
-      }
-  }
+  //         await interaction.editReply({ embeds: [embed], components: [row] });
+  //     } catch (error) {
+  //         console.error(`An error occurred: ${error.message}`);
+  //         await interaction.editReply({ content: 'Failed to retrieve collection information. Please try again later.' });
+  //     }
+   }
 
 
   });
 
-  async function queryCollectionInfo() {
-    const { default: fetch } = await import('node-fetch');
-    const url = `https://api.pallet.exchange/api/v2/nfts/sei18dzktltwccme3vrzc9y624jjm9q5ghzjww7zz38p07qzqys2xgzsvr5dx3/details`;
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch collection info: ${response.statusText}`);
-        }
-        const data = await response.json();
-        return data; 
-    } catch (error) {
-        console.error('There was an error fetching the collection info:', error);
-        throw error; 
-    }
-}
+//   async function queryCollectionInfo() {
+//     const { default: fetch } = await import('node-fetch');
+//     const url = `https://api.pallet.exchange/api/v2/nfts/sei18dzktltwccme3vrzc9y624jjm9q5ghzjww7zz38p07qzqys2xgzsvr5dx3/details`;
+//     try {
+//         const response = await fetch(url);
+//         if (!response.ok) {
+//             throw new Error(`Failed to fetch collection info: ${response.statusText}`);
+//         }
+//         const data = await response.json();
+//         return data; 
+//     } catch (error) {
+//         console.error('There was an error fetching the collection info:', error);
+//         throw error; 
+//     }
+// }
 
 // query nft token metadata
 async function queryNFTMetadata(contractAddress, tokenId) {
